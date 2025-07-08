@@ -5,8 +5,8 @@
 	import { fly, fade, scale } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
+	let mobileMenuOpen = false;
 	let scrollY = 0;
-	let innerHeight = 0;
 	let isVisible = {};
 
 	onMount(() => {
@@ -16,7 +16,7 @@
 					isVisible[entry.target.id] = true;
 				}
 			});
-		}, { threshold: 0.2 });
+		}, { threshold: 0.1 });
 
 		document.querySelectorAll('[id]').forEach(el => {
 			observer.observe(el);
@@ -29,447 +29,685 @@
 		{
 			icon: '🤖',
 			title: 'IA Personnalisée',
-			description: 'Algorithmes d\'optimisation d\'entraînements basés sur vos données de performance et disponibilités',
-			tech: 'Deep Java Library + LangChain4j'
+			description: 'Algorithmes d\'optimisation d\'entraînements qui s\'adaptent à votre niveau, vos disponibilités et vos objectifs sportifs.',
+			tech: 'Deep Learning + Java Quarkus'
 		},
 		{
 			icon: '👥',
-			title: 'Réseau Social',
-			description: 'Connectez-vous avec d\'autres sportifs, partagez vos progrès et motivez-vous mutuellement',
-			tech: 'Architecture événementielle temps réel'
+			title: 'Réseau Social Sportif',
+			description: 'Connectez-vous avec une communauté active, partagez vos performances et motivez-vous ensemble.',
+			tech: 'Architecture temps réel'
 		},
 		{
 			icon: '⌚',
 			title: 'Multi-Appareils',
-			description: 'Synchronisation automatique avec Garmin, Apple Watch, et 90+ autres appareils connectés',
+			description: 'Synchronisation automatique avec Garmin, Apple Watch, Fitbit et plus de 90 autres appareils connectés.',
 			tech: 'Terra API + Health Connect'
 		},
 		{
 			icon: '📊',
 			title: 'Analytics Avancées',
-			description: 'Métriques de performance en temps réel avec prédictions et recommandations intelligentes',
-			tech: 'TimescaleDB + Prometheus'
+			description: 'Métriques détaillées, analyses prédictives et recommandations intelligentes pour optimiser vos performances.',
+			tech: 'TimescaleDB + Machine Learning'
 		},
 		{
 			icon: '🎯',
 			title: 'Objectifs Adaptatifs',
-			description: 'Plans d\'entraînement qui s\'adaptent automatiquement selon vos progrès et contraintes',
+			description: 'Plans d\'entraînement qui évoluent en temps réel selon vos progrès et votre forme du moment.',
 			tech: 'Algorithmes génétiques'
 		},
 		{
-			icon: '🔒',
-			title: 'Sécurité RGPD',
-			description: 'Protection des données de santé avec chiffrement bout-en-bout et conformité européenne',
-			tech: 'OAuth 2.0 + JWT'
+			icon: '🏆',
+			title: 'Défis Communautaires',
+			description: 'Participez à des défis, créez des groupes d\'entraînement et célébrez vos victoires ensemble.',
+			tech: 'Gamification + Social'
 		}
 	];
 
-	const techStack = [
+	const techLogos = [
+		{ name: 'Java Quarkus', logo: '☕' },
+		{ name: 'Flutter', logo: '📱' },
+		{ name: 'Kubernetes', logo: '☸️' },
+		{ name: 'PostgreSQL', logo: '🐘' },
+		{ name: 'AI/ML', logo: '🧠' }
+	];
+
+	const testimonials = [
 		{
-			category: 'Backend',
-			icon: '⚡',
-			color: 'from-blue-500 to-blue-700',
-			items: ['Java Quarkus', 'Microservices', 'Architecture Réactive', 'GraalVM Native']
+			content: "Ferum a complètement transformé ma façon de m'entraîner. L'IA comprend vraiment mes besoins et s'adapte à mon emploi du temps chargé. Incroyable !",
+			author: "Marie Dubois",
+			role: "Marathonienne amateur",
+			avatar: "👩‍🦰"
 		},
 		{
-			category: 'Frontend',
-			icon: '📱',
-			color: 'from-cyan-500 to-cyan-700',
-			items: ['Flutter', 'Web + Mobile', 'Riverpod', 'Material Design']
+			content: "En tant que coach, j'utilise Ferum pour suivre tous mes clients. La plateforme facilite énormément la planification et le suivi des progrès.",
+			author: "Thomas Martin",
+			role: "Coach sportif professionnel",
+			avatar: "👨‍💼"
 		},
 		{
-			category: 'Intelligence Artificielle',
-			icon: '🧠',
-			color: 'from-purple-500 to-purple-700',
-			items: ['Deep Java Library', 'LangChain4j', 'Modèles Prédictifs', 'Recommandations ML']
-		},
-		{
-			category: 'Infrastructure',
-			icon: '🚀',
-			color: 'from-green-500 to-green-700',
-			items: ['Kubernetes', 'Docker', 'GitHub Actions', 'Prometheus + Grafana']
+			content: "L'aspect social de Ferum m'a permis de rester motivé pendant le confinement. La communauté est vraiment bienveillante et inspirante.",
+			author: "Lucas Rodriguez",
+			role: "Passionné de fitness",
+			avatar: "🧑‍🦱"
 		}
 	];
 
-	const architectureFeatures = [
-		{
-			title: 'Microservices Événementiels',
-			description: 'Architecture scalable avec 7 microservices spécialisés',
-			icon: '🏗️'
-		},
-		{
-			title: 'Déploiement Cloud-Native',
-			description: 'Kubernetes avec auto-scaling et haute disponibilité',
-			icon: '☁️'
-		},
-		{
-			title: 'CI/CD Automatisé',
-			description: 'Pipeline DevOps complet avec tests et déploiements sécurisés',
-			icon: '🔄'
-		},
-		{
-			title: 'Monitoring 360°',
-			description: 'Observabilité complète avec métriques, logs et tracing',
-			icon: '📈'
-		}
-	];
+	function toggleMobileMenu() {
+		mobileMenuOpen = !mobileMenuOpen;
+	}
 </script>
 
-<svelte:window bind:scrollY bind:innerHeight />
+<svelte:window bind:scrollY />
 
-<!-- Hero Section -->
-<section class="relative min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-800 overflow-hidden">
-	<!-- Animated background elements -->
-	<div class="absolute inset-0">
-		{#each Array(20) as _, i}
-			<div 
-				class="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
-				style="left: {Math.random() * 100}%; top: {Math.random() * 100}%; animation-delay: {Math.random() * 2}s;"
-			></div>
-		{/each}
-	</div>
-
-	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-		<div class="text-center">
-			{#if isVisible.hero !== false}
-				<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}">
-					<h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-						<span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">ferum</span>
-						<br>
-						<span class="text-3xl sm:text-4xl lg:text-5xl">Le Futur du Sport Social</span>
-					</h1>
+<div class="bg-white">
+	<!-- Header -->
+	<header class="absolute inset-x-0 top-0 z-50">
+		<nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+			<div class="flex lg:flex-1">
+				<a href="#" class="-m-1.5 p-1.5 flex items-center space-x-2">
+					<div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+						<span class="text-white font-bold text-sm">F</span>
+					</div>
+					<span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Ferum</span>
+				</a>
+			</div>
+			
+			<div class="flex lg:hidden">
+				<button type="button" on:click={toggleMobileMenu} class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-50 transition-colors">
+					<span class="sr-only">Ouvrir le menu principal</span>
+					<svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+					</svg>
+				</button>
+			</div>
+			
+			<div class="hidden lg:flex lg:gap-x-12">
+				<a href="#features" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Fonctionnalités</a>
+				<a href="#technology" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Technologies</a>
+				<a href="#testimonials" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Témoignages</a>
+				<a href="#contact" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Équipe</a>
+			</div>
+			
+			<div class="hidden lg:flex lg:flex-1 lg:justify-end">
+				<a href="#newsletter" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all duration-300">
+					Rejoindre la beta <span aria-hidden="true">🚀</span>
+				</a>
+			</div>
+		</nav>
+		
+		<!-- Mobile menu -->
+		{#if mobileMenuOpen}
+			<div class="lg:hidden" role="dialog" aria-modal="true" transition:fly="{{ y: -100, duration: 300 }}">
+				<div class="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm" on:click={toggleMobileMenu}></div>
+				<div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-2xl">
+					<div class="flex items-center justify-between">
+						<a href="#" class="-m-1.5 p-1.5 flex items-center space-x-2">
+							<div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+								<span class="text-white font-bold text-sm">F</span>
+							</div>
+							<span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Ferum</span>
+						</a>
+						<button type="button" on:click={toggleMobileMenu} class="-m-2.5 rounded-md p-2.5 text-gray-700">
+							<span class="sr-only">Fermer le menu</span>
+							<svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+							</svg>
+						</button>
+					</div>
+					<div class="mt-6 flow-root">
+						<div class="-my-6 divide-y divide-gray-500/10">
+							<div class="space-y-2 py-6">
+								<a href="#features" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Fonctionnalités</a>
+								<a href="#technology" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Technologies</a>
+								<a href="#testimonials" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Témoignages</a>
+								<a href="#contact" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Équipe</a>
+							</div>
+							<div class="py-6">
+								<a href="#newsletter" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Rejoindre la beta</a>
+							</div>
+						</div>
+					</div>
 				</div>
-			{/if}
+			</div>
+		{/if}
+	</header>
 
-			{#if isVisible.hero !== false}
-				<div in:fly="{{ y: 50, duration: 800, delay: 200, easing: quintOut }}">
-					<p class="text-xl sm:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-						Une plateforme révolutionnaire qui combine réseau social sportif et intelligence artificielle 
-						pour créer des programmes d'entraînement personnalisés et connecter une communauté passionnée.
+	<main>
+		<!-- Hero section -->
+		<div id="hero" class="relative isolate pt-14">
+			<svg class="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200" aria-hidden="true">
+				<defs>
+					<pattern id="ferum-hero-pattern" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+						<path d="M100 200V.5M.5 .5H200" fill="none" />
+					</pattern>
+				</defs>
+				<svg x="50%" y="-1" class="overflow-visible fill-gray-50">
+					<path d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z" stroke-width="0" />
+				</svg>
+				<rect width="100%" height="100%" stroke-width="0" fill="url(#ferum-hero-pattern)" />
+			</svg>
+			
+			<div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
+				<div class="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
+					{#if isVisible.hero !== false}
+						<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}">
+							<div class="flex">
+								<div class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-blue-600/20 transition-all">
+									<span class="font-semibold text-blue-600">🚀 Projet étudiant</span>
+									<span class="h-4 w-px bg-gray-900/10" aria-hidden="true"></span>
+									<a href="#contact" class="flex items-center gap-x-1 hover:text-blue-600 transition-colors">
+										<span class="absolute inset-0" aria-hidden="true"></span>
+										Rejoindre l'équipe
+										<svg class="-mr-2 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					{/if}
+
+					{#if isVisible.hero !== false}
+						<div in:fly="{{ y: 50, duration: 800, delay: 200, easing: quintOut }}">
+							<h1 class="mt-10 text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl">
+								L'avenir du <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">sport intelligent</span>
+							</h1>
+						</div>
+					{/if}
+
+					{#if isVisible.hero !== false}
+						<div in:fly="{{ y: 50, duration: 800, delay: 400, easing: quintOut }}">
+							<p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
+								Révolutionnez votre expérience sportive avec Ferum : le réseau social qui combine intelligence artificielle, 
+								planification d'entraînements personnalisés et communauté passionnée pour vous aider à atteindre vos objectifs.
+							</p>
+						</div>
+					{/if}
+
+					{#if isVisible.hero !== false}
+						<div in:fly="{{ y: 50, duration: 800, delay: 600, easing: quintOut }}">
+							<div class="mt-10 flex items-center gap-x-6">
+								<a href="#features" class="rounded-md bg-gradient-to-r from-blue-600 to-purple-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all duration-300">
+									Découvrir le projet
+								</a>
+								<a href="#technology" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+									Technologies utilisées <span aria-hidden="true">→</span>
+								</a>
+							</div>
+						</div>
+					{/if}
+				</div>
+				
+				<div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
+					{#if isVisible.hero !== false}
+						<div in:scale="{{ duration: 1000, delay: 800, easing: quintOut }}">
+							<!-- App Preview -->
+							<div class="mx-auto w-80 max-w-full">
+								<div class="relative">
+									<div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-20"></div>
+									<div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 p-1 shadow-2xl">
+										<div class="rounded-3xl bg-gradient-to-br from-gray-100 to-white p-6">
+											<!-- Interface mockup -->
+											<div class="space-y-4">
+												<!-- Header app -->
+												<div class="flex items-center justify-between">
+													<div class="flex items-center space-x-2">
+														<div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"></div>
+														<span class="font-bold text-gray-900">Ferum</span>
+													</div>
+													<div class="text-2xl">🏃‍♂️</div>
+												</div>
+												
+												<!-- Stats cards -->
+												<div class="grid grid-cols-2 gap-3">
+													<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3 text-center">
+														<div class="text-2xl font-bold text-blue-600">2.5K</div>
+														<div class="text-xs text-blue-600">pas aujourd'hui</div>
+													</div>
+													<div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-3 text-center">
+														<div class="text-2xl font-bold text-orange-600">💪</div>
+														<div class="text-xs text-orange-600">Entraînement IA</div>
+													</div>
+												</div>
+												
+												<!-- Progress bar -->
+												<div class="space-y-2">
+													<div class="flex justify-between text-sm">
+														<span class="text-gray-600">Objectif hebdomadaire</span>
+														<span class="text-gray-800 font-semibold">75%</span>
+													</div>
+													<div class="w-full bg-gray-200 rounded-full h-2">
+														<div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full w-3/4"></div>
+													</div>
+												</div>
+												
+												<!-- Friends activity -->
+												<div class="space-y-2">
+													<h3 class="font-semibold text-gray-900 text-sm">Activité des amis</h3>
+													<div class="space-y-2">
+														{#each ['Marie a terminé un 10K 🏃‍♀️', 'Thomas a battu son record 🏆', 'Lucas s\'entraîne maintenant 💪'] as activity, i}
+															<div class="flex items-center space-x-2 text-xs text-gray-600 bg-gray-50 rounded-lg p-2">
+																<div class="w-6 h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-full text-white text-xs flex items-center justify-center font-bold">
+																	{['M', 'T', 'L'][i]}
+																</div>
+																<span>{activity}</span>
+															</div>
+														{/each}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+
+		<!-- Logo cloud -->
+		<div class="mx-auto max-w-7xl px-6 lg:px-8 pb-24">
+			<div class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+				{#each techLogos as tech}
+					<div class="col-span-2 max-h-12 w-full flex flex-col items-center justify-center lg:col-span-1 opacity-60 hover:opacity-100 transition-opacity">
+						<div class="text-3xl mb-1">{tech.logo}</div>
+						<div class="text-xs text-gray-500 font-medium">{tech.name}</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+
+		<!-- Feature section principale -->
+		<div id="features" class="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
+			<div class="relative isolate overflow-hidden bg-gray-900 px-6 py-20 sm:rounded-3xl sm:px-10 sm:py-24 lg:py-24 xl:px-24">
+				<div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-y-0">
+					{#if isVisible.features}
+						<div in:fly="{{ x: -50, duration: 800, easing: quintOut }}" class="lg:row-start-2 lg:max-w-md">
+							<h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
+								Boostez vos performances. Commencez à utiliser Ferum dès aujourd'hui.
+							</h2>
+							<p class="mt-6 text-lg/8 text-gray-300">
+								Notre plateforme révolutionnaire combine intelligence artificielle et réseau social pour créer l'expérience sportive parfaite, 
+								adaptée à votre niveau et vos objectifs personnels.
+							</p>
+						</div>
+					{/if}
+					
+					{#if isVisible.features}
+						<div in:scale="{{ duration: 800, delay: 200, easing: quintOut }}" class="relative -z-20 max-w-xl min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-5xl lg:max-w-none">
+							<!-- Dashboard Screenshot Mockup -->
+							<div class="bg-gradient-to-br from-gray-100 to-white rounded-xl p-6">
+								<div class="space-y-6">
+									<!-- Header -->
+									<div class="flex items-center justify-between">
+										<h3 class="text-xl font-bold text-gray-900">Tableau de bord IA</h3>
+										<div class="flex space-x-2">
+											<div class="w-3 h-3 bg-red-500 rounded-full"></div>
+											<div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+											<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+										</div>
+									</div>
+									
+									<!-- Analytics Cards -->
+									<div class="grid grid-cols-3 gap-4">
+										<div class="bg-blue-50 rounded-lg p-4 text-center">
+											<div class="text-2xl font-bold text-blue-600">12</div>
+											<div class="text-sm text-blue-600">Entraînements IA</div>
+										</div>
+										<div class="bg-green-50 rounded-lg p-4 text-center">
+											<div class="text-2xl font-bold text-green-600">89%</div>
+											<div class="text-sm text-green-600">Objectifs atteints</div>
+										</div>
+										<div class="bg-purple-50 rounded-lg p-4 text-center">
+											<div class="text-2xl font-bold text-purple-600">245</div>
+											<div class="text-sm text-purple-600">Amis connectés</div>
+										</div>
+									</div>
+									
+									<!-- Chart placeholder -->
+									<div class="bg-gray-50 rounded-lg p-4 h-32 flex items-center justify-center">
+										<div class="text-gray-400 text-center">
+											<div class="text-3xl mb-2">📈</div>
+											<div class="text-sm">Analyses de performance</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{/if}
+					
+					{#if isVisible.features}
+						<div in:fly="{{ x: -50, duration: 800, delay: 400, easing: quintOut }}" class="max-w-xl lg:row-start-3 lg:mt-10 lg:max-w-md lg:border-t lg:border-white/10 lg:pt-10">
+							<dl class="max-w-xl space-y-8 text-base/7 text-gray-300 lg:max-w-none">
+								<div class="relative">
+									<dt class="ml-9 inline-block font-semibold text-white">
+										<div class="absolute top-1 left-1 size-5 text-blue-400 text-lg">🤖</div>
+										IA Personnalisée
+									</dt>
+									<dd class="inline">Algorithmes adaptatifs qui apprennent de vos habitudes et performances pour optimiser vos entraînements.</dd>
+								</div>
+								<div class="relative">
+									<dt class="ml-9 inline-block font-semibold text-white">
+										<div class="absolute top-1 left-1 size-5 text-blue-400 text-lg">👥</div>
+										Communauté Active
+									</dt>
+									<dd class="inline">Rejoignez une communauté bienveillante de sportifs passionnés qui partagent leurs défis et victoires.</dd>
+								</div>
+								<div class="relative">
+									<dt class="ml-9 inline-block font-semibold text-white">
+										<div class="absolute top-1 left-1 size-5 text-blue-400 text-lg">⌚</div>
+										Synchronisation Multi-Appareils
+									</dt>
+									<dd class="inline">Compatible avec tous vos appareils connectés pour un suivi complet et automatique de vos activités.</dd>
+								</div>
+							</dl>
+						</div>
+					{/if}
+				</div>
+				
+				<!-- Background blur effect -->
+				<div class="pointer-events-none absolute top-1/2 left-12 -z-10 -translate-y-1/2 transform-gpu blur-3xl lg:top-auto lg:-bottom-48 lg:translate-y-0 lg:transform-gpu" aria-hidden="true">
+					<div class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-blue-400 to-purple-600 opacity-25" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Features grid section -->
+		<div id="technology" class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
+			{#if isVisible.technology}
+				<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="mx-auto max-w-2xl lg:text-center">
+					<h2 class="text-base/7 font-semibold text-blue-600">Technologies modernes</h2>
+					<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
+						Tout ce dont vous avez besoin pour révolutionner votre sport
+					</p>
+					<p class="mt-6 text-lg/8 text-gray-600">
+						Une architecture technique de pointe combinant Java Quarkus, Flutter, Intelligence Artificielle et DevOps moderne 
+						pour offrir une expérience utilisateur exceptionnelle.
 					</p>
 				</div>
 			{/if}
-
-			{#if isVisible.hero !== false}
-				<div in:fly="{{ y: 50, duration: 800, delay: 400, easing: quintOut }}" class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-					<button class="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-pulse">
-						🚀 Découvrir le Projet
-					</button>
-					<button class="border-2 border-white text-white px-10 py-4 rounded-2xl font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
-						📋 Architecture Technique
-					</button>
-				</div>
-			{/if}
-		</div>
-
-		<!-- Floating Cards Preview -->
-		{#if isVisible.hero !== false}
-			<div in:fly="{{ y: 100, duration: 1000, delay: 600, easing: quintOut }}" class="mt-20 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-				{#each [
-					{ icon: '🤖', title: 'IA Avancée', desc: 'Planification intelligente' },
-					{ icon: '👥', title: 'Social', desc: 'Communauté active' },
-					{ icon: '⌚', title: 'IoT', desc: '90+ appareils connectés' }
-				] as card, i}
-					<div 
-						class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 hover:scale-105"
-						style="animation-delay: {i * 0.2}s;"
-					>
-						<div class="text-4xl mb-3">{card.icon}</div>
-						<h3 class="text-white font-bold text-lg mb-2">{card.title}</h3>
-						<p class="text-white/80 text-sm">{card.desc}</p>
-					</div>
-				{/each}
-			</div>
-		{/if}
-	</div>
-</section>
-
-<!-- Features Section -->
-<section id="features" class="py-24 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		{#if isVisible.features}
-			<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="text-center mb-20">
-				<h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-					Fonctionnalités <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Révolutionnaires</span>
-				</h2>
-				<p class="text-xl text-gray-600 max-w-3xl mx-auto">
-					Une plateforme complète qui réinvente l'expérience sportive grâce à l'intelligence artificielle et la technologie moderne.
-				</p>
-			</div>
-		{/if}
-
-		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-			{#each features as feature, i}
-				{#if isVisible.features}
-					<div 
-						in:fly="{{ y: 50, duration: 600, delay: i * 100, easing: quintOut }}"
-						class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
-					>
-						<div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-						<h3 class="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-						<p class="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
-						<div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3">
-							<span class="text-sm font-semibold text-blue-600">🔧 {feature.tech}</span>
-						</div>
-					</div>
-				{/if}
-			{/each}
-		</div>
-	</div>
-</section>
-
-<!-- Tech Stack Section -->
-<section id="tech" class="py-24 bg-gray-900">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		{#if isVisible.tech}
-			<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="text-center mb-20">
-				<h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
-					Stack Technique <span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Moderne</span>
-				</h2>
-				<p class="text-xl text-gray-300 max-w-3xl mx-auto">
-					Technologies de pointe pour une architecture scalable, performante et sécurisée.
-				</p>
-			</div>
-		{/if}
-
-		<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-			{#each techStack as tech, i}
-				{#if isVisible.tech}
-					<div 
-						in:fly="{{ y: 50, duration: 600, delay: i * 150, easing: quintOut }}"
-						class="bg-gray-800 rounded-2xl p-8 hover:bg-gray-700 transition-all duration-300 group hover:scale-105"
-					>
-						<div class="bg-gradient-to-r {tech.color} w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:rotate-12 transition-transform duration-300">
-							{tech.icon}
-						</div>
-						<h3 class="text-2xl font-bold text-white mb-6">{tech.category}</h3>
-						<ul class="space-y-3">
-							{#each tech.items as item}
-								<li class="flex items-center text-gray-300">
-									<div class="w-2 h-2 bg-gradient-to-r {tech.color} rounded-full mr-3"></div>
-									{item}
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{/if}
-			{/each}
-		</div>
-	</div>
-</section>
-
-<!-- Architecture Section -->
-<section id="architecture" class="py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		{#if isVisible.architecture}
-			<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="text-center mb-20">
-				<h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-					Architecture <span class="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">Cloud-Native</span>
-				</h2>
-				<p class="text-xl text-gray-600 max-w-3xl mx-auto">
-					Une architecture microservices moderne, scalable et résiliente pensée pour la production.
-				</p>
-			</div>
-		{/if}
-
-		<!-- Architecture Diagram -->
-		{#if isVisible.architecture}
-			<div in:scale="{{ duration: 800, delay: 200, easing: quintOut }}" class="bg-white rounded-3xl p-8 shadow-2xl mb-16">
-				<div class="grid lg:grid-cols-3 gap-8 items-center">
-					<!-- Frontend -->
-					<div class="text-center">
-						<div class="bg-gradient-to-br from-cyan-400 to-blue-500 w-24 h-24 rounded-2xl mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-							📱
-						</div>
-						<h3 class="text-xl font-bold text-gray-900 mb-2">Frontend</h3>
-						<p class="text-gray-600 text-sm">Flutter Multi-Platform</p>
-						<div class="mt-4 space-y-1 text-sm text-gray-500">
-							<div>• Mobile iOS/Android</div>
-							<div>• Progressive Web App</div>
-							<div>• Riverpod State Management</div>
-						</div>
-					</div>
-
-					<!-- Arrow -->
-					<div class="hidden lg:flex justify-center">
-						<div class="text-4xl text-indigo-400">↔️</div>
-					</div>
-
-					<!-- Backend -->
-					<div class="text-center">
-						<div class="bg-gradient-to-br from-indigo-500 to-purple-600 w-24 h-24 rounded-2xl mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-							⚡
-						</div>
-						<h3 class="text-xl font-bold text-gray-900 mb-2">Backend</h3>
-						<p class="text-gray-600 text-sm">Java Quarkus Microservices</p>
-						<div class="mt-4 space-y-1 text-sm text-gray-500">
-							<div>• 7 Services spécialisés</div>
-							<div>• Architecture événementielle</div>
-							<div>• Native GraalVM</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Microservices Detail -->
-				<div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-					{#each [
-						{ name: 'User Service', port: '8010', icon: '👤' },
-						{ name: 'Social Service', port: '8020', icon: '👥' },
-						{ name: 'Workout Service', port: '8030', icon: '💪' },
-						{ name: 'AI Service', port: '8040', icon: '🤖' },
-						{ name: 'Device Service', port: '8050', icon: '⌚' },
-						{ name: 'Analytics Service', port: '8060', icon: '📊' },
-						{ name: 'Notification Service', port: '8070', icon: '🔔' },
-						{ name: 'API Gateway', port: '8080', icon: '🚪' }
-					] as service, i}
-						<div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 text-center hover:shadow-md transition-all duration-300">
-							<div class="text-2xl mb-2">{service.icon}</div>
-							<div class="font-semibold text-gray-900 text-sm">{service.name}</div>
-							<div class="text-xs text-gray-500">:{service.port}</div>
-						</div>
-					{/each}
-				</div>
-			</div>
-		{/if}
-
-		<!-- Architecture Features -->
-		<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-			{#each architectureFeatures as feature, i}
-				{#if isVisible.architecture}
-					<div 
-						in:fly="{{ y: 50, duration: 600, delay: i * 100, easing: quintOut }}"
-						class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-					>
-						<div class="text-3xl mb-4">{feature.icon}</div>
-						<h3 class="font-bold text-gray-900 mb-2">{feature.title}</h3>
-						<p class="text-gray-600 text-sm">{feature.description}</p>
-					</div>
-				{/if}
-			{/each}
-		</div>
-	</div>
-</section>
-
-<!-- DevOps & Performance Section -->
-<section class="py-24 bg-gray-900">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl font-bold text-white mb-6">
-				DevOps & <span class="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Performance</span>
-			</h2>
-		</div>
-
-		<div class="grid lg:grid-cols-2 gap-12 items-center">
-			<!-- DevOps Pipeline -->
-			<div class="bg-gray-800 rounded-2xl p-8">
-				<h3 class="text-2xl font-bold text-white mb-6">Pipeline CI/CD</h3>
-				<div class="space-y-4">
-					{#each [
-						{ step: 'Code Push', icon: '📝', desc: 'Git commit sur production' },
-						{ step: 'Tests Auto', icon: '🧪', desc: 'Tests unitaires & intégration' },
-						{ step: 'Build Native', icon: '⚡', desc: 'Image Docker optimisée' },
-						{ step: 'Deploy K8s', icon: '🚀', desc: 'Déploiement automatique' },
-						{ step: 'Monitoring', icon: '📊', desc: 'Métriques & alertes' }
-					] as step, i}
-						<div class="flex items-center space-x-4 p-4 bg-gray-700 rounded-xl">
-							<div class="text-2xl">{step.icon}</div>
-							<div>
-								<div class="text-white font-semibold">{step.step}</div>
-								<div class="text-gray-300 text-sm">{step.desc}</div>
+			
+			<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+				<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+					{#each features as feature, i}
+						{#if isVisible.technology}
+							<div in:fly="{{ y: 50, duration: 600, delay: i * 100, easing: quintOut }}" class="flex flex-col group hover:scale-105 transition-transform duration-300">
+								<dt class="flex items-center gap-x-3 text-base/7 font-semibold text-gray-900">
+									<div class="text-3xl group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
+									{feature.title}
+								</dt>
+								<dd class="mt-4 flex flex-auto flex-col text-base/7 text-gray-600">
+									<p class="flex-auto">{feature.description}</p>
+									<div class="mt-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3">
+										<span class="text-sm font-semibold text-blue-600">🔧 {feature.tech}</span>
+									</div>
+									<p class="mt-6">
+										<a href="#" class="text-sm/6 font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+											En savoir plus <span aria-hidden="true">→</span>
+										</a>
+									</p>
+								</dd>
 							</div>
-						</div>
+						{/if}
 					{/each}
-				</div>
+				</dl>
 			</div>
+		</div>
 
-			<!-- Performance Metrics -->
-			<div class="space-y-8">
-				<div class="text-center">
-					<h3 class="text-2xl font-bold text-white mb-8">Performances Cibles</h3>
+		<!-- Newsletter section -->
+		<div id="newsletter" class="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
+			<div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
+				{#if isVisible.newsletter}
+					<div in:scale="{{ duration: 800, easing: quintOut }}">
+						<h2 class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+							Soyez averti du lancement de Ferum
+						</h2>
+						<p class="mx-auto mt-6 max-w-lg text-center text-lg text-gray-300">
+							Rejoignez notre liste d'attente pour être parmi les premiers à découvrir l'avenir du sport intelligent et connecté.
+						</p>
+					</div>
+				{/if}
+				
+				{#if isVisible.newsletter}
+					<div in:fly="{{ y: 50, duration: 800, delay: 200, easing: quintOut }}">
+						<form class="mx-auto mt-10 flex max-w-md gap-x-4">
+							<label for="email-address" class="sr-only">Adresse email</label>
+							<input 
+								id="email-address" 
+								name="email" 
+								type="email" 
+								autocomplete="email" 
+								required 
+								class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-white sm:text-sm/6 transition-all" 
+								placeholder="Votre adresse email" 
+							/>
+							<button 
+								type="submit" 
+								class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-lg hover:bg-gray-100 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all duration-300"
+							>
+								Me prévenir 🚀
+							</button>
+						</form>
+					</div>
+				{/if}
+				
+				<!-- Background effect -->
+				<svg viewBox="0 0 1024 1024" class="absolute top-1/2 left-1/2 -z-10 size-[64rem] -translate-x-1/2" aria-hidden="true">
+					<circle cx="512" cy="512" r="512" fill="url(#ferum-newsletter-gradient)" fill-opacity="0.7" />
+					<defs>
+						<radialGradient id="ferum-newsletter-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(512)">
+							<stop stop-color="#3B82F6" />
+							<stop offset="1" stop-color="#8B5CF6" stop-opacity="0" />
+						</radialGradient>
+					</defs>
+				</svg>
+			</div>
+		</div>
+
+		<!-- Testimonials section -->
+		<div id="testimonials" class="relative isolate mt-32 sm:mt-56 sm:pt-32">
+			<svg class="absolute inset-0 -z-10 hidden size-full mask-[radial-gradient(64rem_64rem_at_top,white,transparent)] stroke-gray-200 sm:block" aria-hidden="true">
+				<defs>
+					<pattern id="ferum-testimonial-pattern" width="200" height="200" x="50%" y="0" patternUnits="userSpaceOnUse">
+						<path d="M.5 200V.5H200" fill="none" />
+					</pattern>
+				</defs>
+				<svg x="50%" y="0" class="overflow-visible fill-gray-50">
+					<path d="M-200.5 0h201v201h-201Z M599.5 0h201v201h-201Z M399.5 400h201v201h-201Z M-400.5 600h201v201h-201Z" stroke-width="0" />
+				</svg>
+				<rect width="100%" height="100%" stroke-width="0" fill="url(#ferum-testimonial-pattern)" />
+			</svg>
+			
+			<div class="relative">
+				<!-- Background gradients -->
+				<div class="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl" aria-hidden="true">
+					<div class="ml-[max(50%,38rem)] aspect-[1313/771] w-[82.0625rem] bg-gradient-to-tr from-blue-400 to-purple-600" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
 				</div>
 				
-				{#each [
-					{ metric: 'Temps de démarrage', value: '< 1s', icon: '⚡', color: 'from-yellow-400 to-orange-500' },
-					{ metric: 'Utilisateurs simultanés', value: '100k+', icon: '👥', color: 'from-blue-400 to-purple-500' },
-					{ metric: 'Temps de réponse API', value: '< 200ms', icon: '🎯', color: 'from-green-400 to-blue-500' },
-					{ metric: 'Disponibilité', value: '99.9%', icon: '🛡️', color: 'from-purple-400 to-pink-500' }
-				] as perf}
-					<div class="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300">
-						<div class="flex items-center justify-between">
-							<div class="flex items-center space-x-4">
-								<div class="bg-gradient-to-r {perf.color} w-12 h-12 rounded-xl flex items-center justify-center text-xl">
-									{perf.icon}
-								</div>
-								<div>
-									<div class="text-white font-semibold">{perf.metric}</div>
-									<div class="text-gray-300 text-sm">Objectif de performance</div>
-								</div>
+				<div class="mx-auto max-w-7xl px-6 lg:px-8">
+					{#if isVisible.testimonials}
+						<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="mx-auto max-w-2xl sm:text-center">
+							<h2 class="text-base/7 font-semibold text-blue-600">Témoignages</h2>
+							<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance">
+								Ils font déjà confiance à Ferum
+							</p>
+						</div>
+					{/if}
+					
+					<div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+						<!-- Featured testimonial -->
+						{#if isVisible.testimonials}
+							<figure in:scale="{{ duration: 800, delay: 200, easing: quintOut }}" class="col-span-2 hidden sm:block sm:rounded-2xl sm:bg-white sm:shadow-lg sm:ring-1 sm:ring-gray-900/5 xl:col-start-2 xl:row-end-1">
+								<blockquote class="p-12 text-xl/8 font-semibold tracking-tight text-gray-900">
+									<p>"{testimonials[0].content}"</p>
+								</blockquote>
+								<figcaption class="flex items-center gap-x-4 border-t border-gray-900/10 px-6 py-4">
+									<div class="size-10 flex-none rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-white text-xl">
+										{testimonials[0].avatar}
+									</div>
+									<div class="flex-auto">
+										<div class="font-semibold">{testimonials[0].author}</div>
+										<div class="text-gray-600">{testimonials[0].role}</div>
+									</div>
+									<div class="h-10 w-auto flex-none bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center px-3">
+										<span class="text-white font-bold text-sm">F</span>
+									</div>
+								</figcaption>
+							</figure>
+						{/if}
+						
+						<!-- Other testimonials -->
+						<div class="space-y-8 xl:contents xl:space-y-0">
+							<div class="space-y-8 xl:row-span-2">
+								{#if isVisible.testimonials}
+									<figure in:fly="{{ y: 50, duration: 600, delay: 400, easing: quintOut }}" class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 hover:shadow-xl transition-shadow duration-300">
+										<blockquote class="text-gray-900">
+											<p>"{testimonials[1].content}"</p>
+										</blockquote>
+										<figcaption class="mt-6 flex items-center gap-x-4">
+											<div class="size-10 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center text-white text-xl">
+												{testimonials[1].avatar}
+											</div>
+											<div>
+												<div class="font-semibold">{testimonials[1].author}</div>
+												<div class="text-gray-600">{testimonials[1].role}</div>
+											</div>
+										</figcaption>
+									</figure>
+								{/if}
 							</div>
-							<div class="text-3xl font-bold bg-gradient-to-r {perf.color} bg-clip-text text-transparent">
-								{perf.value}
+							
+							<div class="space-y-8 xl:row-start-1">
+								{#if isVisible.testimonials}
+									<figure in:fly="{{ y: 50, duration: 600, delay: 600, easing: quintOut }}" class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 hover:shadow-xl transition-shadow duration-300">
+										<blockquote class="text-gray-900">
+											<p>"{testimonials[2].content}"</p>
+										</blockquote>
+										<figcaption class="mt-6 flex items-center gap-x-4">
+											<div class="size-10 rounded-full bg-gradient-to-r from-orange-400 to-red-500 flex items-center justify-center text-white text-xl">
+												{testimonials[2].avatar}
+											</div>
+											<div>
+												<div class="font-semibold">{testimonials[2].author}</div>
+												<div class="text-gray-600">{testimonials[2].role}</div>
+											</div>
+										</figcaption>
+									</figure>
+								{/if}
 							</div>
 						</div>
 					</div>
-				{/each}
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- CTA Section -->
-<section id="contact" class="py-24 bg-gradient-to-br from-indigo-600 to-purple-700">
-	<div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-		<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}">
-			<h2 class="text-4xl sm:text-5xl font-bold text-white mb-8">
-				Rejoignez l'Innovation Sportive
-			</h2>
-			<p class="text-xl text-white/90 mb-12">
-				Participez au développement d'une plateforme qui va révolutionner l'expérience sportive. 
-				Que vous soyez développeur, designer, ou passionné de sport, votre contribution compte !
-			</p>
-		</div>
-
-		<div in:fly="{{ y: 50, duration: 800, delay: 200, easing: quintOut }}" class="flex flex-col sm:flex-row gap-6 justify-center">
-			<button class="bg-white text-indigo-600 px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
-				🚀 Contribuer au projet
-			</button>
-			<button class="border-2 border-white text-white px-10 py-4 rounded-2xl font-semibold text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300">
-				📧 Nous contacter
-			</button>
-		</div>
-
-		<div in:fade="{{ duration: 800, delay: 400 }}" class="mt-16 grid md:grid-cols-3 gap-8">
-			{#each [
-				{ icon: '📧', title: 'Email', value: 'hello@ferum-ai.dev' },
-				{ icon: '💻', title: 'GitHub', value: 'github.com/ferum-ai' },
-				{ icon: '💬', title: 'Discord', value: 'Communauté ferum AI' }
-			] as contact}
-				<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-					<div class="text-3xl mb-3">{contact.icon}</div>
-					<div class="text-white font-semibold mb-1">{contact.title}</div>
-					<div class="text-white/80 text-sm">{contact.value}</div>
 				</div>
-			{/each}
+			</div>
 		</div>
-	</div>
-</section>
+	</main>
 
-<!-- Footer -->
-<footer class="bg-gray-900 py-12">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center">
-			<div class="flex items-center justify-center space-x-2 mb-6">
-				<div class="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-					<span class="text-white font-bold text-sm">SN</span>
+	<!-- Footer -->
+	<footer id="contact" class="mt-32 bg-gray-900 sm:mt-56">
+		<div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
+			<div class="xl:grid xl:grid-cols-3 xl:gap-8">
+				<div class="flex items-center space-x-2">
+					<div class="w-9 h-9 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+						<span class="text-white font-bold">F</span>
+					</div>
+					<span class="text-2xl font-bold text-white">Ferum</span>
 				</div>
-				<span class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">ferum AI</span>
+				
+				<div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+					<div class="md:grid md:grid-cols-2 md:gap-8">
+						<div>
+							<h3 class="text-sm/6 font-semibold text-white">Projet</h3>
+							<ul role="list" class="mt-6 space-y-4">
+								<li><a href="#features" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Fonctionnalités</a></li>
+								<li><a href="#technology" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Technologies</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Architecture</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Roadmap</a></li>
+							</ul>
+						</div>
+						<div class="mt-10 md:mt-0">
+							<h3 class="text-sm/6 font-semibold text-white">Équipe</h3>
+							<ul role="list" class="mt-6 space-y-4">
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">À propos</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">GitHub</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Contribuer</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="md:grid md:grid-cols-2 md:gap-8">
+						<div>
+							<h3 class="text-sm/6 font-semibold text-white">Ressources</h3>
+							<ul role="list" class="mt-6 space-y-4">
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Documentation</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">API</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Guides</a></li>
+							</ul>
+						</div>
+						<div class="mt-10 md:mt-0">
+							<h3 class="text-sm/6 font-semibold text-white">Légal</h3>
+							<ul role="list" class="mt-6 space-y-4">
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Confidentialité</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Conditions</a></li>
+								<li><a href="#" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Licence MIT</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-			<p class="text-gray-400 mb-8">
-				Révolutionner l'expérience sportive grâce à l'intelligence artificielle et la technologie moderne.
-			</p>
-			<div class="text-sm text-gray-500">
-				© 2024 ferum AI - Projet étudiant innovant | Technologies : Java Quarkus • Flutter • IA • Kubernetes
+			
+			<div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
+				<div>
+					<h3 class="text-sm/6 font-semibold text-white">Restez informé du projet</h3>
+					<p class="mt-2 text-sm/6 text-gray-300">Les dernières nouvelles sur le développement de Ferum, directement dans votre boîte mail.</p>
+				</div>
+				<form class="mt-6 sm:flex sm:max-w-md lg:mt-0">
+					<label for="footer-email" class="sr-only">Adresse email</label>
+					<input 
+						type="email" 
+						name="email-address" 
+						id="footer-email" 
+						autocomplete="email" 
+						required 
+						class="w-full min-w-0 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:w-56 sm:text-sm/6 transition-all" 
+						placeholder="Votre email" 
+					/>
+					<div class="mt-4 sm:mt-0 sm:ml-4 sm:shrink-0">
+						<button 
+							type="submit" 
+							class="flex w-full items-center justify-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-lg hover:bg-blue-400 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-300"
+						>
+							S'abonner
+						</button>
+					</div>
+				</form>
+			</div>
+			
+			<div class="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
+				<div class="flex gap-x-6 md:order-2">
+					<a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">
+						<span class="sr-only">GitHub</span>
+						<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+						</svg>
+					</a>
+					<a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">
+						<span class="sr-only">Discord</span>
+						<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.196.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+						</svg>
+					</a>
+					<a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">
+						<span class="sr-only">LinkedIn</span>
+						<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" clip-rule="evenodd" />
+						</svg>
+					</a>
+				</div>
+				<p class="mt-8 text-sm/6 text-gray-400 md:order-1 md:mt-0">
+					© 2024 Ferum - Projet étudiant innovant. Tous droits réservés.
+				</p>
 			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
+</div>
