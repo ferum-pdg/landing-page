@@ -8,7 +8,157 @@
 	let mobileMenuOpen = false;
 	let scrollY = 0;
 	let isVisible = {};
+	let emailAddress = '';
+	let footerEmail = '';
+	let currentMockupIndex = 0;
 
+	// Mockups pour la galerie iPhone
+	const mockupScreens = [
+		{
+			title: "Accueil",
+			content: `
+				<div class="space-y-4">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center space-x-2">
+							<div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"></div>
+							<span class="font-bold text-gray-900">Ferum</span>
+						</div>
+						<div class="text-2xl">🏃‍♂️</div>
+					</div>
+					<div class="grid grid-cols-2 gap-3">
+						<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3 text-center">
+							<div class="text-2xl font-bold text-blue-600">2.5K</div>
+							<div class="text-xs text-blue-600">pas aujourd'hui</div>
+						</div>
+						<div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-3 text-center">
+							<div class="text-2xl font-bold text-orange-600">💪</div>
+							<div class="text-xs text-orange-600">Entraînement IA</div>
+						</div>
+					</div>
+					<div class="space-y-2">
+						<div class="flex justify-between text-sm">
+							<span class="text-gray-600">Objectif hebdomadaire</span>
+							<span class="text-gray-800 font-semibold">75%</span>
+						</div>
+						<div class="w-full bg-gray-200 rounded-full h-2">
+							<div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full w-3/4"></div>
+						</div>
+					</div>
+				</div>
+			`
+		},
+		{
+			title: "Entraînements IA",
+			content: `
+				<div class="space-y-4">
+					<div class="flex items-center justify-between">
+						<h3 class="font-bold text-gray-900">Entraînements IA</h3>
+						<div class="text-xl">🤖</div>
+					</div>
+					<div class="space-y-3">
+						<div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4">
+							<div class="flex items-center justify-between mb-2">
+								<span class="font-semibold text-blue-800">Course matinale</span>
+								<span class="text-sm text-blue-600">30 min</span>
+							</div>
+							<div class="text-sm text-blue-600 mb-2">Recommandé par l'IA</div>
+							<div class="flex items-center space-x-2">
+								<div class="w-full bg-blue-200 rounded-full h-1">
+									<div class="bg-blue-600 h-1 rounded-full w-2/3"></div>
+								</div>
+								<span class="text-xs text-blue-600">67%</span>
+							</div>
+						</div>
+						<div class="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-4">
+							<div class="flex items-center justify-between mb-2">
+								<span class="font-semibold text-green-800">Yoga récupération</span>
+								<span class="text-sm text-green-600">20 min</span>
+							</div>
+							<div class="text-sm text-green-600 mb-2">Adapté à votre fatigue</div>
+							<button class="w-full bg-green-600 text-white py-2 rounded-lg text-sm font-semibold">
+								Commencer
+							</button>
+						</div>
+					</div>
+				</div>
+			`
+		},
+		{
+			title: "Communauté",
+			content: `
+				<div class="space-y-4">
+					<div class="flex items-center justify-between">
+						<h3 class="font-bold text-gray-900">Communauté</h3>
+						<div class="text-xl">👥</div>
+					</div>
+					<div class="space-y-3">
+						<div class="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
+							<div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-red-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
+							<div class="flex-1">
+								<div class="font-semibold text-gray-900 text-sm">Marie</div>
+								<div class="text-xs text-gray-600">A terminé un 10K 🏃‍♀️</div>
+							</div>
+							<div class="text-xs text-gray-400">2h</div>
+						</div>
+						<div class="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
+							<div class="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">T</div>
+							<div class="flex-1">
+								<div class="font-semibold text-gray-900 text-sm">Thomas</div>
+								<div class="text-xs text-gray-600">Nouveau record personnel! 🏆</div>
+							</div>
+							<div class="text-xs text-gray-400">1h</div>
+						</div>
+						<div class="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
+							<div class="w-10 h-10 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold">L</div>
+							<div class="flex-1">
+								<div class="font-semibold text-gray-900 text-sm">Lucas</div>
+								<div class="text-xs text-gray-600">S'entraîne maintenant 💪</div>
+							</div>
+							<div class="w-2 h-2 bg-green-500 rounded-full"></div>
+						</div>
+					</div>
+				</div>
+			`
+		},
+		{
+			title: "Statistiques",
+			content: `
+				<div class="space-y-4">
+					<div class="flex items-center justify-between">
+						<h3 class="font-bold text-gray-900">Statistiques</h3>
+						<div class="text-xl">📊</div>
+					</div>
+					<div class="grid grid-cols-2 gap-3">
+						<div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-3 text-center">
+							<div class="text-2xl font-bold text-purple-600">45</div>
+							<div class="text-xs text-purple-600">Séances ce mois</div>
+						</div>
+						<div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-3 text-center">
+							<div class="text-2xl font-bold text-green-600">12h</div>
+							<div class="text-xs text-green-600">Temps total</div>
+						</div>
+					</div>
+					<div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-4">
+						<div class="flex items-center justify-between mb-2">
+							<span class="font-semibold text-orange-800">Progression</span>
+							<span class="text-sm text-orange-600">+15%</span>
+						</div>
+						<div class="space-y-2">
+							<div class="flex justify-between text-sm">
+								<span class="text-orange-600">Endurance</span>
+								<span class="text-orange-800 font-semibold">85%</span>
+							</div>
+							<div class="w-full bg-orange-200 rounded-full h-2">
+								<div class="bg-orange-600 h-2 rounded-full w-5/6"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`
+		}
+	];
+
+	// Fonction pour changer de mockup automatiquement
 	onMount(() => {
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
@@ -22,8 +172,51 @@
 			observer.observe(el);
 		});
 
-		return () => observer.disconnect();
+		// Rotation automatique des mockups
+		const mockupInterval = setInterval(() => {
+			currentMockupIndex = (currentMockupIndex + 1) % mockupScreens.length;
+		}, 3000);
+
+		return () => {
+			observer.disconnect();
+			clearInterval(mockupInterval);
+		};
 	});
+
+	async function handleNewsletterSubmit(event) {
+		event.preventDefault();
+
+		console.log("event: ", event)
+
+		const emailData = {
+			email: emailAddress,
+			timestamp: new Date().toISOString()
+		};
+
+		console.log("data: ", emailData)
+
+		try {
+			const response = await fetch('/newsletter', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(emailData)
+			});
+
+			const result = await response.json();
+
+			if (result.success) {
+				alert(`Merci ${emailAddress} ! Vous serez averti du lancement de ferum 🚀`);
+				emailAddress = '';
+			} else {
+				alert(`Erreur : ${result.message}`);
+			}
+		} catch (error) {
+			console.error('Erreur réseau:', error);
+			alert('Une erreur est survenue. Veuillez réessayer plus tard.');
+		}
+	}
 
 	const features = [
 		{
@@ -41,7 +234,7 @@
 		{
 			icon: '⌚',
 			title: 'Multi-Appareils',
-			description: 'Synchronisation automatique avec Garmin, Apple Watch, Fitbit et plus de 90 autres appareils connectés.',
+			description: 'Synchronisation automatique avec Garmin, Apple Watch ainsi que Wahoo.',
 			tech: 'Terra API + Health Connect'
 		},
 		{
@@ -238,72 +431,73 @@
 						</div>
 					{/if}
 				</div>
-				
+								
+				<!-- Galerie de mockups iPhone -->
 				<div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
 					{#if isVisible.hero !== false}
 						<div in:scale="{{ duration: 1000, delay: 800, easing: quintOut }}">
-							<!-- App Preview -->
+							<!-- iPhone Mockup avec galerie -->
 							<div class="mx-auto w-80 max-w-full">
 								<div class="relative">
+									<!-- Effet de glow -->
 									<div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-20"></div>
-									<div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 p-1 shadow-2xl">
-										<div class="rounded-3xl bg-gradient-to-br from-gray-100 to-white p-6">
-											<!-- Interface mockup -->
-											<div class="space-y-4">
-												<!-- Header app -->
-												<div class="flex items-center justify-between">
-													<div class="flex items-center space-x-2">
-														<div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"></div>
-														<span class="font-bold text-gray-900">Ferum</span>
-													</div>
-													<div class="text-2xl">🏃‍♂️</div>
-												</div>
-												
-												<!-- Stats cards -->
-												<div class="grid grid-cols-2 gap-3">
-													<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3 text-center">
-														<div class="text-2xl font-bold text-blue-600">2.5K</div>
-														<div class="text-xs text-blue-600">pas aujourd'hui</div>
-													</div>
-													<div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-3 text-center">
-														<div class="text-2xl font-bold text-orange-600">💪</div>
-														<div class="text-xs text-orange-600">Entraînement IA</div>
-													</div>
-												</div>
-												
-												<!-- Progress bar -->
-												<div class="space-y-2">
-													<div class="flex justify-between text-sm">
-														<span class="text-gray-600">Objectif hebdomadaire</span>
-														<span class="text-gray-800 font-semibold">75%</span>
-													</div>
-													<div class="w-full bg-gray-200 rounded-full h-2">
-														<div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full w-3/4"></div>
-													</div>
-												</div>
-												
-												<!-- Friends activity -->
-												<div class="space-y-2">
-													<h3 class="font-semibold text-gray-900 text-sm">Activité des amis</h3>
-													<div class="space-y-2">
-														{#each ['Marie a terminé un 10K 🏃‍♀️', 'Thomas a battu son record 🏆', 'Lucas s\'entraîne maintenant 💪'] as activity, i}
-															<div class="flex items-center space-x-2 text-xs text-gray-600 bg-gray-50 rounded-lg p-2">
-																<div class="w-6 h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-full text-white text-xs flex items-center justify-center font-bold">
-																	{['M', 'T', 'L'][i]}
-																</div>
-																<span>{activity}</span>
+									
+									<!-- Cadre iPhone -->
+									<div class="relative bg-black rounded-[3rem] p-2 shadow-2xl">
+										<div class="bg-black rounded-[2.5rem] p-2">
+											<!-- Encoche iPhone -->
+											<div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-full z-10"></div>
+											
+											<!-- Écran -->
+											<div class="bg-gradient-to-br from-gray-100 to-white rounded-[2rem] p-6 min-h-[600px] relative overflow-hidden">
+												<!-- Barre de status
+												<div class="flex justify-between items-center text-black text-sm font-semibold mb-4 pt-4">
+													<div>9:41</div>
+													<div class="flex items-center space-x-1">
+														<div class="flex space-x-1">
+															<div class="w-1 h-1 bg-black rounded-full"></div>
+															<div class="w-1 h-1 bg-black rounded-full"></div>
+															<div class="w-1 h-1 bg-black rounded-full"></div>
+														</div>
+														<div class="ml-2">
+															<div class="w-6 h-3 border border-black rounded-sm">
+																<div class="w-4 h-2 bg-black rounded-sm m-0.5"></div>
 															</div>
-														{/each}
+														</div>
 													</div>
+												</div>
+												-->
+												
+												<!-- Contenu dynamique -->
+												<div class="transition-all duration-500 mt-5">
+													{@html mockupScreens[currentMockupIndex].content}
+												</div>
+												
+												<!-- Indicateurs de navigation -->
+												<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+													{#each mockupScreens as _, index}
+														<button 
+															class="w-2 h-2 rounded-full transition-all duration-300 {currentMockupIndex === index ? 'bg-blue-600' : 'bg-gray-300'}"
+															on:click={() => currentMockupIndex = index}
+														></button>
+													{/each}
 												</div>
 											</div>
 										</div>
+									</div>
+									
+									<!-- Titre de l'écran actuel -->
+									<div class="mt-4 text-center">
+										<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+											{mockupScreens[currentMockupIndex].title}
+										</span>
 									</div>
 								</div>
 							</div>
 						</div>
 					{/if}
 				</div>
+
 			</div>
 		</div>
 
@@ -470,9 +664,11 @@
 					</div>
 				{/if}
 				
+				<!-- TODO: enregistrer l'adresse email dans un fichier local dans l'application SvelteKit -->
 				{#if isVisible.newsletter}
 					<div in:fly="{{ y: 50, duration: 800, delay: 200, easing: quintOut }}">
-						<form class="mx-auto mt-10 flex max-w-md gap-x-4">
+						<!-- add action to use js function handleNewsletterSubmit -->
+						<form class="mx-auto mt-10 flex max-w-md gap-x-4" on:submit|preventDefault={handleNewsletterSubmit}>
 							<label for="email-address" class="sr-only">Adresse email</label>
 							<input 
 								id="email-address" 
@@ -480,6 +676,7 @@
 								type="email" 
 								autocomplete="email" 
 								required 
+								bind:value={emailAddress}
 								class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-white sm:text-sm/6 transition-all" 
 								placeholder="Votre adresse email" 
 							/>
@@ -508,7 +705,7 @@
 	</main>
 
 	<!-- Footer -->
-	<footer id="contact" class="mt-32 bg-gray-900 sm:mt-56">
+	<footer id="contact" class="bg-gray-900 sm:mt-56">
 		<div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
 			<div class="xl:grid xl:grid-cols-3 xl:gap-8">
 				<div class="flex items-center space-x-2">
