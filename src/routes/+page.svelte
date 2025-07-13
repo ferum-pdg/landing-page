@@ -358,7 +358,7 @@
 	// Team data
 	const teamData = [
 		{
-			name: "Dario Vasquez",
+			name: "Dario Vasques",
 			role: "DevOps & Mobile Developer",
 			description: "Spécialiste en DevOps ainsi qu'en développement mobile.",
 			image: "👨‍💻",
