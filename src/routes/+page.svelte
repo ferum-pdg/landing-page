@@ -289,22 +289,22 @@
 	const appfeatures = [
 		{
 			title: "Génération d'entraînement",
-			description: "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
+			description: "Des plans d’entraînement 100 % personnalisés, générés par notre IA selon vos objectifs, votre niveau, vos disponibilités et vos données de santé. Obtenez un programme sur-mesure, adapté à votre réalité.",
 			icon: "📅"
 		},
 		{
 			title: "Gamefication du l'effort",
-			description: "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
+			description: "Transformez chaque séance en défi motivant grâce à notre système de points, badges et niveaux. Suivez votre progression, relevez des challenges, et atteignez vos objectifs tout en vous amusant.",
 			icon: "👾"
 		},
 		{
 			title: "Partage avec votre communauté",
-			description: "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
+			description: "Publiez vos entraînements, comparez vos stats, suivez vos amis et rejoignez des groupes autour de vos objectifs. Ferum, c’est plus qu’un coach, c’est une équipe.",
 			icon: "👥"
 		},
 		{
 			title: "Connecitvité à vos appareils",
-			description: "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
+			description: "Ferum synchronise automatiquement vos données d’activité grâce à une compatibilité avec les principales montres connectées. Vos efforts sont analysés sans saisie manuelle.",
 			icon: "🛜"
 		}
 	]
@@ -316,42 +316,42 @@
 			titre: "Définition des besoins",
 			description: "Analyse des exigences utilisateur et définition du cahier des charges technique",
 			status: "completed", // completed, in-progress, upcoming
-			date: "Sept 2024"
+			date: "Juin 2025"
 		},
 		{
 			semaine: "S2-S3",
 			titre: "Architecture & Design",
 			description: "Conception de l'architecture technique et des maquettes UI/UX",
 			status: "completed",
-			date: "Oct 2024"
+			date: "Juin 2025"
 		},
 		{
 			semaine: "S4-S6",
 			titre: "Développement Backend",
 			description: "Implémentation de l'API REST avec Java Quarkus et base de données",
-			status: "completed",
-			date: "Nov 2024"
+			status: "in-progress",
+			date: "Juilet-Août 2025"
 		},
 		{
 			semaine: "S7-S9",
 			titre: "Application Mobile",
 			description: "Développement de l'app Flutter avec intégration des APIs",
 			status: "in-progress",
-			date: "Déc 2024"
+			date: "Juilet-Août 2024"
 		},
 		{
 			semaine: "S10-S11",
 			titre: "Intelligence Artificielle",
 			description: "Intégration des algorithmes ML pour la personnalisation",
 			status: "upcoming",
-			date: "Jan 2025"
+			date: "Août 2025"
 		},
 		{
 			semaine: "S12-S13",
 			titre: "Tests & Déploiement",
 			description: "Phase de test, optimisation et déploiement en production",
 			status: "upcoming",
-			date: "Fév 2025"
+			date: "Août 2025"
 		}
 	];
 
