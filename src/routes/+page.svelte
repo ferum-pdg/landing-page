@@ -288,14 +288,11 @@
 
 <div class="bg-white">
 	<!-- Header -->
-	<header class="absolute inset-x-0 top-0 z-50">
+	<header class="fixed bg-white inset-x-0 top-0 z-40">
 		<nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
 			<div class="flex lg:flex-1">
-				<a href="/" class="-m-1.5 p-1.5 flex items-center space-x-2">
-					<div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
-						<span class="text-white font-bold text-sm">F</span>
-					</div>
-					<span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Ferum</span>
+				<a href="/" class="-m-1.5 p-1.5 flex items-center">
+					<img class="w-20" src="f.png" alt="Ferum Logo" />
 				</a>
 			</div>
 			
@@ -337,10 +334,7 @@
 				<div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-2xl">
 					<div class="flex items-center justify-between">
 						<a href="/" class="-m-1.5 p-1.5 flex items-center space-x-2">
-							<div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-								<span class="text-white font-bold text-sm">F</span>
-							</div>
-							<span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Ferum</span>
+							<img class="w-20" src="f.png" alt="Ferum Logo" />
 						</a>
 						<button type="button" on:click={toggleMobileMenu} class="-m-2.5 rounded-md p-2.5 text-gray-700">
 							<span class="sr-only">Fermer le menu</span>
@@ -413,7 +407,7 @@
 					{#if isVisible.hero !== false}
 						<div in:fly="{{ y: 50, duration: 800, delay: 400, easing: quintOut }}">
 							<p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-								Révolutionnez votre expérience sportive avec <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span> : le réseau social qui combine planification d'entraînements personnalisés et communauté passionnée pour vous aider à atteindre vos objectifs.
+								Révolutionnez votre expérience sportive avec <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">ferum</span> : le réseau social qui combine planification d'entraînements personnalisés et communauté passionnée pour vous aider à atteindre vos objectifs.
 							</p>
 						</div>
 					{/if}
@@ -495,7 +489,7 @@
 					
 					<div class="mx-auto max-w-2xl lg:text-center">
 						<h2 class="text-base/7 font-semibold text-indigo-200">Fonctionnalités</h2>
-						<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent sm:text-5xl lg:text-balance">Boostez vos performances. Commencez à utiliser <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span> dès aujourd'hui.</p>
+						<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent sm:text-5xl lg:text-balance">Boostez vos performances. Commencez à utiliser ferum dès aujourd'hui.</p>
 						<p class="mt-6 text-lg/8 text-gray-100">Notre plateforme révolutionnaire combine coach sportif et réseau social pour créer l'expérience sportive parfaite, adaptée à votre niveau et vos objectifs personnels.</p>
 					</div>
 					<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
@@ -508,7 +502,7 @@
 									<div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
 										{appfeature.icon}
 									</div>
-									<span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">{appfeature.title}</span>
+									<span class="text-white">{appfeature.title}</span>
 								</dt>
 								<dd class="mt-2 text-base/7 text-gray-100">{appfeature.description}</dd>
 							</div>
@@ -570,10 +564,10 @@
 				<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="mx-auto max-w-2xl lg:text-center">
 					<h2 class="text-base/7 font-semibold text-blue-600">Roadmap du projet</h2>
 					<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-						Notre plan de développement
+						Notre roadmap
 					</p>
 					<p class="mt-6 text-lg/8 text-gray-600">
-						Découvrez les étapes clés du développement de <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span>, de la conception à la mise en production.
+						Découvrez les étapes clés du développement de <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">ferum</span>, de la conception à la mise en production.
 					</p>
 				</div>
 			{/if}
@@ -628,12 +622,12 @@
 		</div>
 
 		<!-- Team section -->
-		<div id="team" class="mx-auto mt-32 max-w-7xl px-6 lg:px-8">
+		<div id="team" class="mx-auto mt-32 max-w-7xl">
 			{#if isVisible.team}
 				<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="mx-auto max-w-2xl lg:text-center">
 					<h2 class="text-base/7 font-semibold text-blue-600">Notre équipe</h2>
 					<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-						Rencontrez les créateurs de <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span>
+						Rencontrez les créateurs de <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">ferum</span>
 					</p>
 					<p class="mt-6 text-lg/8 text-gray-600">
 						Une équipe passionnée d'étudiants ingénieurs HEIG-VD, combinant expertise technique et vision innovante.
@@ -641,7 +635,7 @@
 				</div>
 			{/if}
 			
-			<div class="mx-auto mt-16 max-w-6xl">
+			<div class="mx-auto mt-10 max-w-7xl sm:px-6 lg:px-8">
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
 					{#each teamData as member, i}
 						{#if isVisible.team}
@@ -692,7 +686,7 @@
 				{#if isVisible.newsletter}
 					<div in:scale="{{ duration: 800, easing: quintOut }}">
 						<h2 class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-							Soyez averti du lancement de <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span>
+							Soyez averti du lancement de <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">ferum</span>
 						</h2>
 						<p class="mx-auto mt-6 max-w-lg text-center text-lg text-gray-300">
 							Rejoignez notre liste d'attente pour être parmi les premiers à découvrir l'avenir du sport intelligent et connecté.
@@ -744,39 +738,27 @@
 		<div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
 			<div class="xl:grid xl:grid-cols-3 xl:gap-8">
 				<div class="flex items-center space-x-2">
-					<div class="w-9 h-9 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-						<span class="text-white font-bold">F</span>
-					</div>
-					<span class="text-2xl font-bold text-white"><span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span></span>
+					<a href="/">
+						<img class="w-30" src="f.png" alt="Ferum Logo" />
+					</a>
 				</div>
-				
 				<div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-					<div class="md:grid md:grid-cols-2 md:gap-8">
-						<div>
-							<h3 class="text-sm/6 font-semibold text-white">Projet</h3>
-							<ul role="list" class="mt-6 space-y-4">
-								<li><a href="#features" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Fonctionnalités</a></li>
-								<li><a href="#technology" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Technologies</a></li>
-								<li><a href="#roadmap" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Roadmap</a></li>
-								<li><a href="#team" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Equipe</a></li>
-							</ul>
-						</div>
-						<div class="mt-10 md:mt-0">
-							<h3 class="text-sm/6 font-semibold text-white">Équipe</h3>
-							<ul role="list" class="mt-6 space-y-4">
-								<!--<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">À propos</a></li>-->
-								<li><a href="https://github.com/ferum-pdg" class="text-sm/6 text-gray-300 hover:text-white transition-colors">GitHub</a></li>
-							</ul>
-						</div>
+					<div>
+						<h3 class="text-sm/6 font-semibold text-white">Projet</h3>
+						<ul role="list" class="mt-6 space-y-4">
+							<li><a href="#features" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Fonctionnalités</a></li>
+							<li><a href="#technology" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Technologies</a></li>
+							<li><a href="#roadmap" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Roadmap</a></li>
+							<li><a href="#team" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Equipe</a></li>
+						</ul>
 					</div>
-					<div class="md:grid md:grid-cols-2 md:gap-8">
-						<div>
-							<h3 class="text-sm/6 font-semibold text-white">Ressources</h3>
-							<ul role="list" class="mt-6 space-y-4">
-								<li><a href="https://github.com/ferum-pdg/docs" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Documentation</a></li>
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">API</a></li>
-							</ul>
-						</div>
+					<div>
+						<h3 class="text-sm/6 font-semibold text-white">Ressources</h3>
+						<ul role="list" class="mt-6 space-y-4">
+							<li><a href="https://github.com/ferum-pdg" class="text-sm/6 text-gray-300 hover:text-white transition-colors">GitHub</a></li>
+							<li><a href="https://github.com/ferum-pdg/docs" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Documentation</a></li>
+							<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">API</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -791,7 +773,7 @@
 					</a>
 				</div>
 				<p class="mt-8 text-sm/6 text-gray-400 md:order-1 md:mt-0">
-					© 2025 <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span> - Projet étudiant innovant. Tous droits réservés.
+					© 2025 <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">ferum</span> - PDG - Projet de groupe, semestre d'été 2025. Tous droits réservés.
 				</p>
 			</div>
 		</div>
