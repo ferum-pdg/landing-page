@@ -16,146 +16,20 @@
 	const mockupScreens = [
 		{
 			title: "Accueil",
-			content: `
-				<div class="space-y-4">
-					<div class="flex items-center justify-between">
-						<div class="flex items-center space-x-2">
-							<div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"></div>
-							<span class="font-bold text-gray-900">Ferum</span>
-						</div>
-						<div class="text-2xl">🏃‍♂️</div>
-					</div>
-					<div class="grid grid-cols-2 gap-3">
-						<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3 text-center">
-							<div class="text-2xl font-bold text-blue-600">2.5K</div>
-							<div class="text-xs text-blue-600">pas aujourd'hui</div>
-						</div>
-						<div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-3 text-center">
-							<div class="text-2xl font-bold text-orange-600">💪</div>
-							<div class="text-xs text-orange-600">Entraînement IA</div>
-						</div>
-					</div>
-					<div class="space-y-2">
-						<div class="flex justify-between text-sm">
-							<span class="text-gray-600">Objectif hebdomadaire</span>
-							<span class="text-gray-800 font-semibold">75%</span>
-						</div>
-						<div class="w-full bg-gray-200 rounded-full h-2">
-							<div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full w-3/4"></div>
-						</div>
-					</div>
-				</div>
-			`
+			link: "image copy.png"
 		},
 		{
-			title: "Entraînements IA",
-			content: `
-				<div class="space-y-4">
-					<div class="flex items-center justify-between">
-						<h3 class="font-bold text-gray-900">Entraînements IA</h3>
-						<div class="text-xl">🤖</div>
-					</div>
-					<div class="space-y-3">
-						<div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4">
-							<div class="flex items-center justify-between mb-2">
-								<span class="font-semibold text-blue-800">Course matinale</span>
-								<span class="text-sm text-blue-600">30 min</span>
-							</div>
-							<div class="text-sm text-blue-600 mb-2">Recommandé par l'IA</div>
-							<div class="flex items-center space-x-2">
-								<div class="w-full bg-blue-200 rounded-full h-1">
-									<div class="bg-blue-600 h-1 rounded-full w-2/3"></div>
-								</div>
-								<span class="text-xs text-blue-600">67%</span>
-							</div>
-						</div>
-						<div class="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-4">
-							<div class="flex items-center justify-between mb-2">
-								<span class="font-semibold text-green-800">Yoga récupération</span>
-								<span class="text-sm text-green-600">20 min</span>
-							</div>
-							<div class="text-sm text-green-600 mb-2">Adapté à votre fatigue</div>
-							<button class="w-full bg-green-600 text-white py-2 rounded-lg text-sm font-semibold">
-								Commencer
-							</button>
-						</div>
-					</div>
-				</div>
-			`
+			title: "Entrainement",
+			link: "image copy 2.png"
 		},
 		{
-			title: "Communauté",
-			content: `
-				<div class="space-y-4">
-					<div class="flex items-center justify-between">
-						<h3 class="font-bold text-gray-900">Communauté</h3>
-						<div class="text-xl">👥</div>
-					</div>
-					<div class="space-y-3">
-						<div class="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
-							<div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-red-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
-							<div class="flex-1">
-								<div class="font-semibold text-gray-900 text-sm">Marie</div>
-								<div class="text-xs text-gray-600">A terminé un 10K 🏃‍♀️</div>
-							</div>
-							<div class="text-xs text-gray-400">2h</div>
-						</div>
-						<div class="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
-							<div class="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">T</div>
-							<div class="flex-1">
-								<div class="font-semibold text-gray-900 text-sm">Thomas</div>
-								<div class="text-xs text-gray-600">Nouveau record personnel! 🏆</div>
-							</div>
-							<div class="text-xs text-gray-400">1h</div>
-						</div>
-						<div class="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
-							<div class="w-10 h-10 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold">L</div>
-							<div class="flex-1">
-								<div class="font-semibold text-gray-900 text-sm">Lucas</div>
-								<div class="text-xs text-gray-600">S'entraîne maintenant 💪</div>
-							</div>
-							<div class="w-2 h-2 bg-green-500 rounded-full"></div>
-						</div>
-					</div>
-				</div>
-			`
+			title: "Entrainement suite",
+			link: "image copy 3.png"
 		},
 		{
-			title: "Statistiques",
-			content: `
-				<div class="space-y-4">
-					<div class="flex items-center justify-between">
-						<h3 class="font-bold text-gray-900">Statistiques</h3>
-						<div class="text-xl">📊</div>
-					</div>
-					<div class="grid grid-cols-2 gap-3">
-						<div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-3 text-center">
-							<div class="text-2xl font-bold text-purple-600">45</div>
-							<div class="text-xs text-purple-600">Séances ce mois</div>
-						</div>
-						<div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-3 text-center">
-							<div class="text-2xl font-bold text-green-600">12h</div>
-							<div class="text-xs text-green-600">Temps total</div>
-						</div>
-					</div>
-					<div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-4">
-						<div class="flex items-center justify-between mb-2">
-							<span class="font-semibold text-orange-800">Progression</span>
-							<span class="text-sm text-orange-600">+15%</span>
-						</div>
-						<div class="space-y-2">
-							<div class="flex justify-between text-sm">
-								<span class="text-orange-600">Endurance</span>
-								<span class="text-orange-800 font-semibold">85%</span>
-							</div>
-							<div class="w-full bg-orange-200 rounded-full h-2">
-								<div class="bg-orange-600 h-2 rounded-full w-5/6"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			`
-		}
+			title: "Profil",
+			link: "image copy 4.png"
+		},
 	];
 
 	// Fonction pour changer de mockup automatiquement
@@ -221,9 +95,9 @@
 	const features = [
 		{
 			icon: '🤖',
-			title: 'IA Personnalisée',
+			title: 'Personnalisation des entraînements',
 			description: 'Algorithmes d\'optimisation d\'entraînements qui s\'adaptent à votre niveau, vos disponibilités et vos objectifs sportifs.',
-			tech: 'Deep Learning + Java Quarkus'
+			tech: 'Algorithmes d\'optimisation'
 		},
 		{
 			icon: '👥',
@@ -289,7 +163,7 @@
 	const appfeatures = [
 		{
 			title: "Génération d'entraînement",
-			description: "Des plans d’entraînement 100 % personnalisés, générés par notre IA selon vos objectifs, votre niveau, vos disponibilités et vos données de santé. Obtenez un programme sur-mesure, adapté à votre réalité.",
+			description: "Des plans d’entraînement 100 % personnalisés, générés par notre application selon vos objectifs, votre niveau, vos disponibilités et vos données de santé. Obtenez un programme sur-mesure, adapté à votre réalité.",
 			icon: "📅"
 		},
 		{
@@ -299,7 +173,7 @@
 		},
 		{
 			title: "Partage avec votre communauté",
-			description: "Publiez vos entraînements, comparez vos stats, suivez vos amis et rejoignez des groupes autour de vos objectifs. Ferum, c’est plus qu’un coach, c’est une équipe.",
+			description: "Publiez vos entraînements, comparez vos stats et suivez vos amis. Ferum, c’est plus qu’un coach, c’est une équipe.",
 			icon: "👥"
 		},
 		{
@@ -319,40 +193,54 @@
 			date: "Juin 2025"
 		},
 		{
-			semaine: "S2-S3",
+			semaine: "S1-S3",
 			titre: "Architecture & Design",
 			description: "Conception de l'architecture technique et des maquettes UI/UX",
 			status: "completed",
-			date: "Juin 2025"
+			date: "Juillet 2025"
 		},
 		{
-			semaine: "S4-S6",
-			titre: "Développement Backend",
-			description: "Implémentation de l'API REST avec Java Quarkus et base de données",
+			semaine: "S1-S3",
+			titre: "Langind page",
+			description: "Conception du site web de présentation du projet",
 			status: "in-progress",
-			date: "Juilet-Août 2025"
+			date: "Juillet 2025"
 		},
 		{
-			semaine: "S7-S9",
+			semaine: "S1-S3",
+			titre: "CI/CD",
+			description: "Conception d'une pipeline CI/CD pour automatiser le déploiement de la landing page",
+			status: "in-progress",
+			date: "Juillet 2025"
+		},
+		{
+			semaine: "S4-S5",
+			titre: "Tests first approach",
+			description: "Ecriture des tests unitaires et d'intégration pour driver le développement du backend.",
+			status: "upcoming",
+			date: "Juillet-Août 2025"
+		},
+		{
+			semaine: "S4-S10",
+			titre: "Développement Backend",
+			description: "POC de connexion avec les APIs de Garmin et Apple Health puis développement du backend avec Quarkus",
+			status: "upcoming",
+			date: "Août 2025"
+		},
+		{
+			semaine: "S4-S10",
 			titre: "Application Mobile",
 			description: "Développement de l'app Flutter avec intégration des APIs",
-			status: "in-progress",
-			date: "Juilet-Août 2024"
+			status: "upcoming",
+			date: "Août 2025"
 		},
 		{
 			semaine: "S10-S11",
 			titre: "Intelligence Artificielle",
-			description: "Intégration des algorithmes ML pour la personnalisation",
+			description: "Si le temps le permet, implémentation d'un algorithme d'IA pour la génération de plans d'entraînement personnalisés",
 			status: "upcoming",
 			date: "Août 2025"
 		},
-		{
-			semaine: "S12-S13",
-			titre: "Tests & Déploiement",
-			description: "Phase de test, optimisation et déploiement en production",
-			status: "upcoming",
-			date: "Août 2025"
-		}
 	];
 
 	// Team data
@@ -363,8 +251,7 @@
 			description: "Spécialiste en DevOps ainsi qu'en développement mobile.",
 			image: "👨‍💻",
 			skills: ["Kubernetes", "Flutter"],
-			github: "https://github.com/alexmartin",
-			linkedin: "https://linkedin.com/in/alexmartin"
+			github: "https://github.com/dariovas"
 		},
 		{
 			name: "Ewan Mariaux",
@@ -372,8 +259,7 @@
 			description: "Spécialiste en DevOps ainsi qu'en développement mobile.",
 			image: "👨‍💻",
 			skills: ["Kubernetes", "Flutter"],
-			github: "https://github.com/alexmartin",
-			linkedin: "https://linkedin.com/in/alexmartin"
+			github: "https://github.com/emariaux"
 		},
 		{
 			name: "Guillaume Trüeb",
@@ -381,8 +267,7 @@
 			description: "Apprécie la gestion de projet ainsi que le développement de backend.",
 			image: "👨‍🔬",
 			skills: ["Quarkus", "SvelteKit", "GitHub", "Piêtre triathlète"],
-			github: "https://github.com/lucaschen",
-			linkedin: "https://linkedin.com/in/lucaschen"
+			github: "https://github.com/grinlemon"
 		},
 		{
 			name: "Gwendal Piemontesi",
@@ -390,8 +275,7 @@
 			description: "Passionné par l'IA et le développement backend.",
 			image: "👨‍🔬",
 			skills: ["Intelligence Artificielle", "Quarkus", "Marathonien"],
-			github: "https://github.com/emmarodriguez",
-			linkedin: "https://linkedin.com/in/emmarodriguez"
+			github: "https://github.com/tasty-orange"
 		}
 	];
 
@@ -427,8 +311,8 @@
 			<div class="hidden lg:flex lg:gap-x-12">
 				<a href="#features" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Fonctionnalités</a>
 				<a href="#technology" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Technologies</a>
-				<a href="#testimonials" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Roadmap</a>
-				<a href="#contact" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Équipe</a>
+				<a href="#roadmap" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Roadmap</a>
+				<a href="#team" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Équipe</a>
 			</div>
 			
 			<div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -470,8 +354,8 @@
 							<div class="space-y-2 py-6">
 								<a href="#features" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Fonctionnalités</a>
 								<a href="#technology" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Technologies</a>
-								<a href="#testimonials" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Roadmap</a>
-								<a href="#contact" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Équipe</a>
+								<a href="#roadmap" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Roadmap</a>
+								<a href="#team" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Équipe</a>
 							</div>
 							<div class="py-6">
 								<a href="#newsletter" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Rejoindre la beta</a>
@@ -498,13 +382,13 @@
 				<rect width="100%" height="100%" stroke-width="0" fill="url(#ferum-hero-pattern)" />
 			</svg>
 			
-			<div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
+			<div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-20">
 				<div class="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
 					{#if isVisible.hero !== false}
 						<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}">
 							<div class="flex">
 								<div class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-blue-600/20 transition-all">
-									<span class="font-semibold text-blue-600">🚀 Projet étudiant</span>
+									<span class="font-semibold text-blue-600">PDG 2025</span>
 									<span class="h-4 w-px bg-gray-900/10" aria-hidden="true"></span>
 									<a href="https://heig-vd.ch" class="flex items-center gap-x-1 hover:text-blue-600 transition-colors" target="_blank">
 										<span class="absolute inset-0" aria-hidden="true"></span>
@@ -529,8 +413,7 @@
 					{#if isVisible.hero !== false}
 						<div in:fly="{{ y: 50, duration: 800, delay: 400, easing: quintOut }}">
 							<p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-								Révolutionnez votre expérience sportive avec Ferum : le réseau social qui combine intelligence artificielle, 
-								planification d'entraînements personnalisés et communauté passionnée pour vous aider à atteindre vos objectifs.
+								Révolutionnez votre expérience sportive avec <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span> : le réseau social qui combine planification d'entraînements personnalisés et communauté passionnée pour vous aider à atteindre vos objectifs.
 							</p>
 						</div>
 					{/if}
@@ -556,60 +439,34 @@
 							<!-- iPhone Mockup avec galerie -->
 							<div class="mx-auto w-80 max-w-full">
 								<div class="relative">
-									<!-- Effet de glow -->
+									<!-- Effet de glow
 									<div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-20"></div>
+									-->
 									
-									<!-- Cadre iPhone -->
-									<div class="relative bg-black rounded-[3rem] p-2 shadow-2xl">
-										<div class="bg-black rounded-[2.5rem] p-2">
-											<!-- Encoche iPhone -->
-											<div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-full z-10"></div>
-											
-											<!-- Écran -->
-											<div class="bg-gradient-to-br from-gray-100 to-white rounded-[2rem] p-6 min-h-[600px] relative overflow-hidden">
-												<!-- Barre de status
-												<div class="flex justify-between items-center text-black text-sm font-semibold mb-4 pt-4">
-													<div>9:41</div>
-													<div class="flex items-center space-x-1">
-														<div class="flex space-x-1">
-															<div class="w-1 h-1 bg-black rounded-full"></div>
-															<div class="w-1 h-1 bg-black rounded-full"></div>
-															<div class="w-1 h-1 bg-black rounded-full"></div>
-														</div>
-														<div class="ml-2">
-															<div class="w-6 h-3 border border-black rounded-sm">
-																<div class="w-4 h-2 bg-black rounded-sm m-0.5"></div>
-															</div>
-														</div>
-													</div>
-												</div>
-												-->
-												
-												<!-- Contenu dynamique -->
-												<div class="transition-all duration-500 mt-5">
-													{@html mockupScreens[currentMockupIndex].content}
-												</div>
-												
-												<!-- Indicateurs de navigation -->
-												<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-													{#each mockupScreens as _, index}
-														<button 
-															class="w-2 h-2 rounded-full transition-all duration-300 {currentMockupIndex === index ? 'bg-blue-600' : 'bg-gray-300'}"
-															on:click={() => currentMockupIndex = index}
-															aria-label="Afficher l'écran {mockupScreens[index].title}"
-														></button>
-													{/each}
-												</div>
-											</div>
-										</div>
+									<!-- Contenu dynamique -->
+									<div class="transition-all duration-500 mt-5 mb-7 border border-gray-200 rounded-lg overflow-hidden shadow-lg">
+										<img src="/design/{mockupScreens[currentMockupIndex].link}" alt="Mockup de l'app" />
 									</div>
 									
-									<!-- Titre de l'écran actuel -->
+									<!-- Indicateurs de navigation
+									<div class="absolute bottom-4 mb-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
+										{#each mockupScreens as _, index}
+											<button 
+												class="w-2 h-2 rounded-full transition-all duration-300 {currentMockupIndex === index ? 'bg-blue-600' : 'bg-gray-300'}"
+												on:click={() => currentMockupIndex = index}
+												aria-label="Afficher l'écran {mockupScreens[index].title}"
+											></button>
+										{/each}
+									</div>
+									-->
+									
+									<!-- Titre de l'écran actuel
 									<div class="mt-4 text-center">
 										<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
 											{mockupScreens[currentMockupIndex].title}
 										</span>
 									</div>
+									-->
 								</div>
 							</div>
 						</div>
@@ -638,7 +495,7 @@
 					
 					<div class="mx-auto max-w-2xl lg:text-center">
 						<h2 class="text-base/7 font-semibold text-indigo-200">Fonctionnalités</h2>
-						<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent sm:text-5xl lg:text-balance">Boostez vos performances. Commencez à utiliser Ferum dès aujourd'hui.</p>
+						<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent sm:text-5xl lg:text-balance">Boostez vos performances. Commencez à utiliser <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span> dès aujourd'hui.</p>
 						<p class="mt-6 text-lg/8 text-gray-100">Notre plateforme révolutionnaire combine coach sportif et réseau social pour créer l'expérience sportive parfaite, adaptée à votre niveau et vos objectifs personnels.</p>
 					</div>
 					<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
@@ -716,7 +573,7 @@
 						Notre plan de développement
 					</p>
 					<p class="mt-6 text-lg/8 text-gray-600">
-						Découvrez les étapes clés du développement de Ferum, de la conception à la mise en production.
+						Découvrez les étapes clés du développement de <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span>, de la conception à la mise en production.
 					</p>
 				</div>
 			{/if}
@@ -776,7 +633,7 @@
 				<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}" class="mx-auto max-w-2xl lg:text-center">
 					<h2 class="text-base/7 font-semibold text-blue-600">Notre équipe</h2>
 					<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-						Rencontrez les créateurs de Ferum
+						Rencontrez les créateurs de <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span>
 					</p>
 					<p class="mt-6 text-lg/8 text-gray-600">
 						Une équipe passionnée d'étudiants ingénieurs HEIG-VD, combinant expertise technique et vision innovante.
@@ -821,12 +678,6 @@
 											<path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
 										</svg>
 									</a>
-									<a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-600 transition-colors">
-										<span class="sr-only">LinkedIn</span>
-										<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-											<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-										</svg>
-									</a>
 								</div>
 							</div>
 						{/if}
@@ -841,7 +692,7 @@
 				{#if isVisible.newsletter}
 					<div in:scale="{{ duration: 800, easing: quintOut }}">
 						<h2 class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-							Soyez averti du lancement de Ferum
+							Soyez averti du lancement de <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span>
 						</h2>
 						<p class="mx-auto mt-6 max-w-lg text-center text-lg text-gray-300">
 							Rejoignez notre liste d'attente pour être parmi les premiers à découvrir l'avenir du sport intelligent et connecté.
@@ -849,7 +700,6 @@
 					</div>
 				{/if}
 				
-				<!-- TODO: enregistrer l'adresse email dans un fichier local dans l'application SvelteKit -->
 				{#if isVisible.newsletter}
 					<div in:fly="{{ y: 50, duration: 800, delay: 200, easing: quintOut }}">
 						<!-- add action to use js function handleNewsletterSubmit -->
@@ -897,7 +747,7 @@
 					<div class="w-9 h-9 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
 						<span class="text-white font-bold">F</span>
 					</div>
-					<span class="text-2xl font-bold text-white">Ferum</span>
+					<span class="text-2xl font-bold text-white"><span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span></span>
 				</div>
 				
 				<div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
@@ -907,14 +757,14 @@
 							<ul role="list" class="mt-6 space-y-4">
 								<li><a href="#features" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Fonctionnalités</a></li>
 								<li><a href="#technology" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Technologies</a></li>
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Architecture</a></li>
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Roadmap</a></li>
+								<li><a href="#roadmap" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Roadmap</a></li>
+								<li><a href="#team" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Equipe</a></li>
 							</ul>
 						</div>
 						<div class="mt-10 md:mt-0">
 							<h3 class="text-sm/6 font-semibold text-white">Équipe</h3>
 							<ul role="list" class="mt-6 space-y-4">
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">À propos</a></li>
+								<!--<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">À propos</a></li>-->
 								<li><a href="https://github.com/ferum-pdg" class="text-sm/6 text-gray-300 hover:text-white transition-colors">GitHub</a></li>
 							</ul>
 						</div>
@@ -925,15 +775,6 @@
 							<ul role="list" class="mt-6 space-y-4">
 								<li><a href="https://github.com/ferum-pdg/docs" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Documentation</a></li>
 								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">API</a></li>
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Guides</a></li>
-							</ul>
-						</div>
-						<div class="mt-10 md:mt-0">
-							<h3 class="text-sm/6 font-semibold text-white">Légal</h3>
-							<ul role="list" class="mt-6 space-y-4">
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Confidentialité</a></li>
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Conditions</a></li>
-								<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Licence MIT</a></li>
 							</ul>
 						</div>
 					</div>
@@ -950,7 +791,7 @@
 					</a>
 				</div>
 				<p class="mt-8 text-sm/6 text-gray-400 md:order-1 md:mt-0">
-					© 2025 Ferum - Projet étudiant innovant. Tous droits réservés.
+					© 2025 <span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ferum</span> - Projet étudiant innovant. Tous droits réservés.
 				</p>
 			</div>
 		</div>
