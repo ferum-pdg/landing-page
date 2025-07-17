@@ -427,8 +427,8 @@
 			<div class="hidden lg:flex lg:gap-x-12">
 				<a href="#features" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Fonctionnalités</a>
 				<a href="#technology" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Technologies</a>
-				<a href="#testimonials" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Roadmap</a>
-				<a href="#contact" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Équipe</a>
+				<a href="#roadmap" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Roadmap</a>
+				<a href="#team" class="text-sm/6 font-semibold text-gray-900 hover:text-blue-600 transition-colors">Équipe</a>
 			</div>
 			
 			<div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -470,8 +470,8 @@
 							<div class="space-y-2 py-6">
 								<a href="#features" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Fonctionnalités</a>
 								<a href="#technology" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Technologies</a>
-								<a href="#testimonials" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Roadmap</a>
-								<a href="#contact" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Équipe</a>
+								<a href="#roadmap" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Roadmap</a>
+								<a href="#team" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Équipe</a>
 							</div>
 							<div class="py-6">
 								<a href="#newsletter" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Rejoindre la beta</a>
@@ -504,7 +504,7 @@
 						<div in:fly="{{ y: 50, duration: 800, easing: quintOut }}">
 							<div class="flex">
 								<div class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-blue-600/20 transition-all">
-									<span class="font-semibold text-blue-600">🚀 Projet étudiant</span>
+									<span class="font-semibold text-blue-600">PDG 2025</span>
 									<span class="h-4 w-px bg-gray-900/10" aria-hidden="true"></span>
 									<a href="https://heig-vd.ch" class="flex items-center gap-x-1 hover:text-blue-600 transition-colors" target="_blank">
 										<span class="absolute inset-0" aria-hidden="true"></span>
