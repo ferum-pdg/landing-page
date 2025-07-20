@@ -16,20 +16,32 @@
 	const mockupScreens = [
 		{
 			title: "Accueil",
-			link: "image copy.png"
+			link: "accueil-1.png"
+		},
+		{
+			title: "Accueil",
+			link: "accueil-2.png"
 		},
 		{
 			title: "Entrainement",
-			link: "image copy 2.png"
+			link: "entrainement-1.png"
 		},
 		{
-			title: "Entrainement suite",
-			link: "image copy 3.png"
+			title: "Entrainement",
+			link: "entrainement-2.png"
+		},
+		{
+			title: "Entrainement",
+			link: "entrainement-3.png"
 		},
 		{
 			title: "Profil",
-			link: "image copy 4.png"
+			link: "profil-1.png"
 		},
+		{
+			title: "Profil",
+			link: "profil-2.png"
+		}
 	];
 
 	// Fonction pour changer de mockup automatiquement
@@ -115,7 +127,7 @@
 			icon: '📊',
 			title: 'Analytics Avancées',
 			description: 'Métriques détaillées, analyses prédictives et recommandations intelligentes pour optimiser vos performances.',
-			tech: 'TimescaleDB + Machine Learning'
+			tech: 'Affichages dynmiques'
 		},
 		{
 			icon: '🎯',
@@ -126,7 +138,7 @@
 		{
 			icon: '🏆',
 			title: 'Défis Communautaires',
-			description: 'Participez à des défis, créez des groupes d\'entraînement et célébrez vos victoires ensemble.',
+			description: 'Participez à des défis et célébrez vos victoires ensemble.',
 			tech: 'Gamification + Social'
 		}
 	];
@@ -139,35 +151,14 @@
 		{ name: 'AI/ML', logo: '🧠' }
 	];
 
-	const testimonials = [
-		{
-			content: "Ferum a complètement transformé ma façon de m'entraîner. L'IA comprend vraiment mes besoins et s'adapte à mon emploi du temps chargé. Incroyable !",
-			author: "Marie Dubois",
-			role: "Marathonienne amateur",
-			avatar: "👩‍🦰"
-		},
-		{
-			content: "En tant que coach, j'utilise Ferum pour suivre tous mes clients. La plateforme facilite énormément la planification et le suivi des progrès.",
-			author: "Thomas Martin",
-			role: "Coach sportif professionnel",
-			avatar: "👨‍💼"
-		},
-		{
-			content: "L'aspect social de Ferum m'a permis de rester motivé pendant le confinement. La communauté est vraiment bienveillante et inspirante.",
-			author: "Lucas Rodriguez",
-			role: "Passionné de fitness",
-			avatar: "🧑‍🦱"
-		}
-	];
-
 	const appfeatures = [
 		{
 			title: "Génération d'entraînement",
-			description: "Des plans d’entraînement 100 % personnalisés, générés par notre application selon vos objectifs, votre niveau, vos disponibilités et vos données de santé. Obtenez un programme sur-mesure, adapté à votre réalité.",
+			description: "Des plans d’entraînement 100% personnalisés, générés par notre application selon vos objectifs, votre niveau, vos disponibilités et vos données de santé. Obtenez un programme sur-mesure, adapté à votre réalité.",
 			icon: "📅"
 		},
 		{
-			title: "Gamefication du l'effort",
+			title: "Gamefication de l'effort",
 			description: "Transformez chaque séance en défi motivant grâce à notre système de points, badges et niveaux. Suivez votre progression, relevez des challenges, et atteignez vos objectifs tout en vous amusant.",
 			icon: "👾"
 		},
@@ -208,22 +199,22 @@
 		},
 		{
 			semaine: "S1-S3",
-			titre: "CI/CD",
-			description: "Conception d'une pipeline CI/CD pour automatiser le déploiement de la landing page",
+			titre: "CD/CI",
+			description: "Conception d'une pipeline CD/CI pour automatiser le déploiement de la landing page",
 			status: "in-progress",
 			date: "Juillet 2025"
 		},
 		{
 			semaine: "S4-S5",
 			titre: "Tests first approach",
-			description: "Ecriture des tests unitaires et d'intégration pour driver le développement du backend.",
+			description: "Ecriture des tests unitaires et d'intégration pour driver le développement du backend",
 			status: "upcoming",
 			date: "Juillet-Août 2025"
 		},
 		{
 			semaine: "S4-S10",
 			titre: "Développement Backend",
-			description: "POC de connexion avec les APIs de Garmin et Apple Health puis développement du backend avec Quarkus",
+			description: "POC de connexion avec les APIs de Garmin et Apple Health puis développement du backend avec Quarkus ainsi que la génération d'entraînements",
 			status: "upcoming",
 			date: "Août 2025"
 		},
@@ -273,7 +264,7 @@
 			name: "Gwendal Piemontesi",
 			role: "Backend Developer & AI Specialist",
 			description: "Passionné par l'IA et le développement backend.",
-			image: "👨‍🔬",
+			image: "👨",
 			skills: ["Intelligence Artificielle", "Quarkus", "Marathonien"],
 			github: "https://github.com/tasty-orange"
 		}
@@ -438,7 +429,7 @@
 									-->
 									
 									<!-- Contenu dynamique -->
-									<div class="transition-all duration-500 mt-5 mb-7 border border-gray-200 rounded-lg overflow-hidden shadow-lg">
+									<div class="transition-all duration-500 mt-5 mb-7 border border-black rounded-4xl overflow-hidden shadow-lg border-6">
 										<img src="/design/{mockupScreens[currentMockupIndex].link}" alt="Mockup de l'app" />
 									</div>
 									
@@ -630,7 +621,7 @@
 						Rencontrez les créateurs de <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">ferum</span>
 					</p>
 					<p class="mt-6 text-lg/8 text-gray-600">
-						Une équipe passionnée d'étudiants ingénieurs HEIG-VD, combinant expertise technique et vision innovante.
+						Une équipe passionnée d'étudiants ingénieurs de la HEIG-VD, combinant expertise technique et vision innovante.
 					</p>
 				</div>
 			{/if}
