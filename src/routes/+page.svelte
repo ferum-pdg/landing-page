@@ -239,7 +239,7 @@
 		{
 			name: "Dario Vasques",
 			role: "DevOps & Mobile Developer",
-			description: "Passioné de sport en tout genre.",
+			description: "Passionné de sport en tout genre.",
 			image: "👨‍💻",
 			skills: ["Kubernetes", "Flutter"],
 			github: "https://github.com/dariovas"
