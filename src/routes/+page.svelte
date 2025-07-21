@@ -194,14 +194,14 @@
 			semaine: "S1-S3",
 			titre: "Langind page",
 			description: "Conception du site web de présentation du projet",
-			status: "in-progress",
+			status: "completed",
 			date: "Juillet 2025"
 		},
 		{
 			semaine: "S1-S3",
 			titre: "CD/CI",
 			description: "Conception d'une pipeline CD/CI pour automatiser le déploiement de la landing page",
-			status: "in-progress",
+			status: "completed",
 			date: "Juillet 2025"
 		},
 		{
