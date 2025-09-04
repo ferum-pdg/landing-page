@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { fly, fade, scale } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
+	import { base, assets } from '$app/paths';
 
 	let mobileMenuOpen = false;
 	let scrollY = 0;
@@ -82,7 +83,7 @@
 		console.log("data: ", emailData)
 
 		try {
-			const response = await fetch('/newsletter', {
+			const response = await fetch('${base}/newsletter', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -283,7 +284,7 @@
 		<nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
 			<div class="flex lg:flex-1">
 				<a href="/" class="-m-1.5 p-1.5 flex items-center">
-					<img class="w-20" src="f.png" alt="Ferum Logo" />
+					<img class="w-20" src="{assets}/f.png" alt="Ferum Logo" />
 				</a>
 			</div>
 			
@@ -430,7 +431,7 @@
 									
 									<!-- Contenu dynamique -->
 									<div class="transition-all duration-500 mt-5 mb-7 border border-black rounded-4xl overflow-hidden shadow-lg border-6">
-										<img src="/design/{mockupScreens[currentMockupIndex].link}" alt="Mockup de l'app" />
+										<img src="{assets}/design/{mockupScreens[currentMockupIndex].link}" alt="Mockup de l'app" />
 									</div>
 									
 									<!-- Indicateurs de navigation
@@ -729,8 +730,8 @@
 		<div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
 			<div class="xl:grid xl:grid-cols-3 xl:gap-8">
 				<div class="flex items-center space-x-2">
-					<a href="/">
-						<img class="w-30" src="f.png" alt="Ferum Logo" />
+					<a href="{base}/">
+						<img class="w-20" src="{assets}/f.png" alt="Ferum Logo" />
 					</a>
 				</div>
 				<div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
@@ -748,7 +749,7 @@
 						<ul role="list" class="mt-6 space-y-4">
 							<li><a href="https://github.com/ferum-pdg" class="text-sm/6 text-gray-300 hover:text-white transition-colors">GitHub</a></li>
 							<li><a href="https://github.com/ferum-pdg/docs" class="text-sm/6 text-gray-300 hover:text-white transition-colors">Documentation</a></li>
-							<li><a href="/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">API</a></li>
+							<li><a href="{base}/coming-soon" class="text-sm/6 text-gray-300 hover:text-white transition-colors">API</a></li>
 						</ul>
 					</div>
 				</div>
