@@ -209,28 +209,28 @@
 			semaine: "S4-S5",
 			titre: "Tests first approach",
 			description: "Ecriture des tests unitaires et d'intégration pour driver le développement du backend",
-			status: "upcoming",
+			status: "completed",
 			date: "Juillet-Août 2025"
 		},
 		{
 			semaine: "S4-S10",
 			titre: "Développement Backend",
 			description: "POC de connexion avec les APIs de Garmin et Apple Health puis développement du backend avec Quarkus ainsi que la génération d'entraînements",
-			status: "upcoming",
+			status: "completed",
 			date: "Août 2025"
 		},
 		{
 			semaine: "S4-S10",
 			titre: "Application Mobile",
 			description: "Développement de l'app Flutter avec intégration des APIs",
-			status: "upcoming",
+			status: "completed",
 			date: "Août 2025"
 		},
 		{
 			semaine: "S10-S11",
 			titre: "Intelligence Artificielle",
 			description: "Si le temps le permet, implémentation d'un algorithme d'IA pour la génération de plans d'entraînement personnalisés",
-			status: "upcoming",
+			status: "completed",
 			date: "Août 2025"
 		},
 	];
